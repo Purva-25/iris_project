@@ -26,10 +26,12 @@ def predict_species(scaler_path , model_path):
         scaler=pickle.load(file1)
     with open(model_path , 'rb') as file2:
         model = pickle.load(file2)
-    dct ={'sepal_length':[sep_len],
-          'sepal_width':[sep_wid],
-          'petal_length':[pet_len],
-          'petal_width':[pet_wid]}
+    dct = {
+    'SepalLengthCm': [sep_len],
+    'SepalWidthCm': [sep_wid],
+    'PetalLengthCm': [pet_len],
+    'PetalWidthCm': [pet_wid]
+     }
     xnew = pd.DataFrame(dct)
     xnew_pre = scaler.transform(xnew)
     pred=model.predict(xnew_pre)
